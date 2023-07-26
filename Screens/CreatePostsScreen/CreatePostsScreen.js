@@ -85,7 +85,7 @@ const CreatePostsScreen = ({ navigation, route }) => {
     <TouchableWithoutFeedback onPress={keyboardHide}>
       <KeyboardAvoidingView
         style={styles.container}
-        behavior={Platform.OS == "ios" ? "padding" : "height"}
+        behavior={Platform.OS == "android" ? "padding" : "height"}
       >
         {uri ? (
           <Image source={{ uri }} style={styles.imageBox} />

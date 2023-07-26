@@ -48,7 +48,7 @@ const Registr = ({ navigation }) => {
     <TouchableWithoutFeedback onPress={keyboardHide}>
       <KeyboardAvoidingView
         style={styles.keyboard}
-        behavior={Platform.OS == "ios" ? "padding" : "height"}
+        behavior={Platform.OS == "android" ? "padding" : "height"}
       >
         <Container>
           <Avatar />
