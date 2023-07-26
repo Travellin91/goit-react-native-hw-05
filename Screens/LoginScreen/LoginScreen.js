@@ -9,6 +9,7 @@ import {
   KeyboardAvoidingView,
   TouchableWithoutFeedback,
   Keyboard,
+  ScrollView,
 } from "react-native";
 import styles from "./LoginScreen.styles.js";
 
@@ -37,18 +38,14 @@ const Login = ({ navigation }) => {
   };
 
   const keyboardHide = () => {
-    setIsShowKeyboard(false);
     setHidePassword(true);
+    setIsShowKeyboard(false);
     Keyboard.dismiss();
   };
-  console.log(isShowKeyboard);
   const { email, password } = state;
   return (
     <TouchableWithoutFeedback onPress={keyboardHide}>
-      <KeyboardAvoidingView
-        style={styles.keyboard}
-        behavior={Platform.OS == "android" ? "padding" : "height"}
-      >
+      <ScrollView contentContainerStyle={{ flex: 1 }}>
         <Container>
           <View style={styles.form}>
             <Text style={styles.formTitle}>Login</Text>
@@ -84,15 +81,15 @@ const Login = ({ navigation }) => {
             >
               <Text style={styles.btnTitle}>Sign In</Text>
             </TouchableOpacity>
+            <Text
+              style={{ ...styles.limk, marginBottom: isShowKeyboard ? 0 : 144 }}
+              onPress={() => navigation.navigate("Registration")}
+            >
+              Don't have an account? Sign Up
+            </Text>
           </View>
-          <Text
-            style={{ ...styles.limk, paddingBottom: isShowKeyboard ? 0 : 144 }}
-            onPress={() => navigation.navigate("Registration")}
-          >
-            Don't have an account? Sign Up
-          </Text>
         </Container>
-      </KeyboardAvoidingView>
+      </ScrollView>
     </TouchableWithoutFeedback>
   );
 };

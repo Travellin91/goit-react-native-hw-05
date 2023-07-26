@@ -10,6 +10,7 @@ import {
   KeyboardAvoidingView,
   TouchableWithoutFeedback,
   Keyboard,
+  ScrollView,
 } from "react-native";
 import styles from "./RegistrationScreen.styles.js";
 
@@ -46,9 +47,9 @@ const Registr = ({ navigation }) => {
   const { login, email, password } = state;
   return (
     <TouchableWithoutFeedback onPress={keyboardHide}>
-      <KeyboardAvoidingView
-        style={styles.keyboard}
-        behavior={Platform.OS == "android" ? "padding" : "height"}
+      <ScrollView
+        contentContainerStyle={styles.keyboard}
+        keyboardShouldPersistTaps="handled"
       >
         <Container>
           <Avatar />
@@ -105,7 +106,7 @@ const Registr = ({ navigation }) => {
             Already have an account? Sign In
           </Text>
         </Container>
-      </KeyboardAvoidingView>
+      </ScrollView>
     </TouchableWithoutFeedback>
   );
 };
